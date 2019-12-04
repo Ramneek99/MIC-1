@@ -1,43 +1,3 @@
-/*
- *
- *  PC.java
- *
- *  mic1 microarchitecture simulator
- *  Copyright (C) 1999, Prentice-Hall, Inc.
- *
- *  This program is free software; you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation; either version 2 of the License, or
- *  (at your option) any later version.
- *
- *  This program is distributed in the hope that it will be useful, but
- *  WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General
- *  Public License for more details.
- *
- *  You should have received a copy of the GNU General Public License along with
- *  this program; if not, write to:
- *
- *    Free Software Foundation, Inc.
- *    59 Temple Place - Suite 330
- *    Boston, MA 02111-1307, USA.
- *
- *  A copy of the GPL is available online the GNU web site:
- *
- *    http://www.gnu.org/copyleft/gpl.html
- *
- */
-
-
-/**
- * Program counter register.  Used for fetching operators and operands
- * from main memory.
- *
- * @author
- *   Dan Stone (<a href="mailto:dans@ontko.com"><i>dans@ontko.com</i></a>),
- *   Ray Ontko & Co,
- *   Richmond, Indiana, US
- */
 import java.awt.*;
 
 public class PC extends TextField {
@@ -71,9 +31,7 @@ public class PC extends TextField {
     public void store() {
         if (store_cl.getValue()[0]) {
             value = in.getValue();
-            if (mic1sim.debug)
-                DebugFrame.text.appendText("PC: Store " + Integer.toHexString(value).toUpperCase() + "\n");
-            if (!mic1sim.run || cycle_count == COUNT_MAX) {
+            if (cycle_count == COUNT_MAX) {
                 setText("0x" + Integer.toHexString(value).toUpperCase());
                 cycle_count = 0;
             }
@@ -84,9 +42,7 @@ public class PC extends TextField {
     public void put() {
         if (put_cl.getValue()[0]) {
             out.setValue(value);
-            if (mic1sim.debug)
-                DebugFrame.text.appendText("PC: Put " + Integer.toHexString(value).toUpperCase() + "\n");
-            if (!mic1sim.run || cycle_count == COUNT_MAX) {
+            if ( cycle_count == COUNT_MAX) {
                 setText("0x" + Integer.toHexString(value).toUpperCase());
                 cycle_count = 0;
             }
@@ -97,9 +53,7 @@ public class PC extends TextField {
     public void mem() {
         if (mem_cl.getValue()[MIR.FETCH]) {
             address_bus.setValue(value);
-            if (mic1sim.debug)
-                DebugFrame.text.appendText("PC: Fetch byte " + Integer.toHexString(value).toUpperCase() + "\n");
-            if (!mic1sim.run || cycle_count == COUNT_MAX) {
+            if (cycle_count == COUNT_MAX) {
                 setText("0x" + Integer.toHexString(value).toUpperCase());
                 cycle_count = 0;
             }

@@ -66,16 +66,10 @@ public class MDR extends TextField {
     public void store() {
         if (store_cl.getValue()[0]) {
             value = in.getValue();
-            if (mic1sim.debug)
-                DebugFrame.text.appendText("MDR: Store 0x" + Integer.toHexString(value).toUpperCase() + "\n");
-            if (!mic1sim.run)
                 refresh();
         }
         if (read_cl.getValue()[0]) {
             value = data_bus.getValue();
-            if (mic1sim.debug)
-                DebugFrame.text.appendText("MDR: Read 0x" + Integer.toHexString(value).toUpperCase() + "\n");
-            if (!mic1sim.run)
                 refresh();
         }
     }
@@ -83,9 +77,6 @@ public class MDR extends TextField {
     public void put() {
         if (put_cl.getValue()[0]) {
             out.setValue(value);
-            if (mic1sim.debug)
-                DebugFrame.text.appendText("MDR: Put 0x" + Integer.toHexString(value).toUpperCase() + "\n");
-            if (!mic1sim.run)
                 refresh();
         }
     }
@@ -93,10 +84,6 @@ public class MDR extends TextField {
     public void mem() {
         if (mem_cl.getValue()[MIR.WRITE]) {
             data_bus.setValue(value);
-            if (mic1sim.debug)
-                DebugFrame.text.appendText("MDR: Write 0x" + Integer.toHexString(value).toUpperCase() + "\n");
-            if (!mic1sim.run)
-                refresh();
         }
     }
 

@@ -1,45 +1,7 @@
-/*
- *
- *  Decoder.java
- *
- *  mic1 microarchitecture simulator
- *  Copyright (C) 1999, Prentice-Hall, Inc.
- *
- *  This program is free software; you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation; either version 2 of the License, or
- *  (at your option) any later version.
- *
- *  This program is distributed in the hope that it will be useful, but
- *  WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General
- *  Public License for more details.
- *
- *  You should have received a copy of the GNU General Public License along with
- *  this program; if not, write to:
- *
- *    Free Software Foundation, Inc.
- *    59 Temple Place - Suite 330
- *    Boston, MA 02111-1307, USA.
- *
- *  A copy of the GPL is available online the GNU web site:
- *
- *    http://www.gnu.org/copyleft/gpl.html
- *
- */
 
-/**
- * Decodes a 4-bit control line from the MIR and enables the proper register
- * control line.
- *
- * @author
- *   Dan Stone (<a href="mailto:dans@ontko.com"><i>dans@ontko.com</i></a>),
- *   Ray Ontko & Co,
- *   Richmond, Indiana, US
- */
 public class Decoder {
 
-    private IntControlLine decoder_cl = null;
+    private ControlLine decoder_cl = null;
 
     private ControlLine
             mdr_cl = null,
@@ -54,7 +16,7 @@ public class Decoder {
 
     public Decoder(){}
 
-    public Decoder(IntControlLine decoder_cl, ControlLine mdr_cl, ControlLine pc_cl,
+    public Decoder(ControlLine decoder_cl, ControlLine mdr_cl, ControlLine pc_cl,
                    ControlLine mbr_cl, ControlLine mbru_cl, ControlLine sp_cl,
                    ControlLine lv_cl, ControlLine cpp_cl, ControlLine tos_cl,
                    ControlLine opc_cl) {
@@ -71,7 +33,7 @@ public class Decoder {
     }
 
     public void poke() {
-        int value = decoder_cl.getValue();
+        int value = decoder_cl.getValue2();
 
         boolean mdr_ar[]  = {value == 0};
         boolean pc_ar[]   = {value == 1};
